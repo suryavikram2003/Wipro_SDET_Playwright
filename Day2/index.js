@@ -82,15 +82,27 @@ console.log(colors.length);
 console.log(colors[3]); // undefined
 console.log(colors[colors.length - 1]);
 colors.push("yellow"); 
-console.log(colors);
-colors.pop();
-console.log(colors);
-colors.unshift("purple"); 
-console.log(colors); 
-colors.shift(); 
-console.log(colors);
+// console.log(colors);
+// colors.pop();
+// console.log(colors);
+// colors.unshift("purple"); 
+// console.log(colors); 
+// colors.shift(); 
+// console.log(colors);
 
 
-console.log(colors.splice(0, 1));
-console.log(colors.splice(1, 2));
-console.log(colors.splice(1, 3));
+// console.log(colors.splice(0, 1));
+// console.log(colors.splice(1, 2));
+// console.log(colors.splice(1, 3));
+
+
+// let indexof = "yellow";
+// for(let i=0;i<colors.length;i++) {
+//     if(colors[i] === indexof) {
+//         return i;
+//     }
+//     if(i === colors.length - 1) {
+//         return -1;
+//     }
+//     }
+
