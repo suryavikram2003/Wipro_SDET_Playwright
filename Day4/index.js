@@ -67,13 +67,13 @@
  
 
     // userid %2=0 -> even id's
-    fetch("https://jsonplaceholder.typicode.com/todos")
-    .then(res => res.json())
-    .then(data => data.filter(d => d.userId % 2 === 0))
-    .then(data =>data.map(d =>(d.title = " Book Title: " + d.title)))
-    .then(data => console.log(data))
+    // fetch("https://jsonplaceholder.typicode.com/todos")
+    // .then(res => res.json())
+    // .then(data => data.filter(d => d.userId % 2 === 0))
+    // .then(data =>data.map(d =>(d.title = " Book Title: " + d.title)))
+    // .then(data => console.log(data))
 
-    .catch(error => console.error("Error fetching data:", error));
+    // .catch(error => console.error("Error fetching data:", error));
 
 // getData().then((data) => {
 //     console.log(data);
@@ -89,3 +89,67 @@
 // setInterval(() => {
 //     console.log("Checking for new data...");
 // }, 3000);
+
+// fetch("u6ArRuAc4GRARJ0xr9mRwFl2lYZZsDkd")
+// .then(res => res.json())
+// .then(data => console.log(data))
+// .catch(error => console.error("Error fetching data:", error));
+// fetch("https://api.apilayer.com/currency_data/live?source=USD", {
+//   headers: {
+//     apikey: "u6ArRuAc4GRARJ0xr9mRwFl2lYZZsDkd"
+//   }
+// })
+// .then(res => res.json())
+// .then(data => console.log(data));
+
+
+// fetch("https://api.apilayer.com/number_verification/validate?number=u6ArRuAc4GRARJ0xr9mRwFl2lYZZsDkd")
+//  .then(response => response.json())
+//      .then(data => console.log(data))
+//      .catch(error => console.error("Error fetching data:", error));
+
+
+  //   u6ArRuAc4GRARJ0xr9mRwFl2lYZZsDkd
+
+
+// var myHeaders = new Headers();
+// myHeaders.append("apikey", "u6ArRuAc4GRARJ0xr9mRwFl2lYZZsDkd");
+
+// var requestOptions = {
+//   method: 'GET',
+//   redirect: 'follow',
+//   headers: myHeaders
+// };
+
+// fetch("https://api.apilayer.com/exchangerates_data/latest?symbols=symbols&base=base", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
+
+
+// fetch("https://open.er-api.com/v6/latest/USD")
+//   .then(res => res.json())
+//   .then(data => {
+//     console.log("USD to INR:", data.rates.INR);
+//     console.log("USD to EUR:", data.rates.EUR);
+//     console.log("USD to GBP:", data.rates.GBP);
+//   })
+//   .catch(err => console.error(err));
+
+// //Print value Greater than 90
+// fetch("https://open.er-api.com/v6/latest/USD")
+//   .then(res => res.json())
+//   .then(data => {
+//     let result = Object.entries(data.rates)
+//       .filter(([currency, value]) => value > 90);
+
+//     console.log(result);
+//   })
+//   .catch(err => console.error(err));
+
+  
+
+   fetch("https://catfact.ninja/facts?limit=10")
+  .then(response => response.json())
+  .then(data => console.log(data))
+     .catch(error => console.error("Error fetching data:", error));
