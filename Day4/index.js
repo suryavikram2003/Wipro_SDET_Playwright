@@ -15,37 +15,75 @@
 
 //async -- execute without waiting for the previous task to complete
 
-//Resolve
-function getdata() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => { // used to execute after some delay provide with the seconds mentioned below
-            resolve("Data fetched successfully");   // success message are displayed using resolve.
-        }, 2000); // delay seconds mentioned in ms.
-    });
-}
- // this is like the try catch, which is used to execute and proivde the output, if getdata() function is successful then is executed.
-getdata().then(data => {  
-    console.log(data);
-}).catch(error => {
-    console.error("Error fetching data:", error);
-});
+// //Resolve
+// function getdata() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => { // used to execute after some delay provide with the seconds mentioned below
+//             resolve("Data fetched successfully");   // success message are displayed using resolve.
+//         }, 2000); // delay seconds mentioned in ms.
+//     });
+// }
+//  // this is like the try catch, which is used to execute and proivde the output, if getdata() function is successful then is executed.
+// getdata().then(data => {  
+//     console.log(data);
+// }).catch(error => {
+//     console.error("Error fetching data:", error);
+// });
 
-//Reject
-// example for rejecting  or getting an error.
-function getdataerror(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(() =>{
-            reject("Error fetching data");
-        },2000);
-    });
-}
-// reject will get into the catch block and the message is displayed.
-getdataerror().then(data =>{
-    console.log(data);
-}).catch(error =>{
-    console.error("Error fetching data:", error);
-});
+// //Reject
+// // example for rejecting  or getting an error.
+// function getdataerror(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() =>{
+//             reject("Error fetching data");
+//         },2000);
+//     });
+// }
+// // reject will get into the catch block and the message is displayed.
+// getdataerror().then(data =>{
+//     console.log(data);
+// }).catch(error =>{
+//     console.error("Error fetching data:", error);
+// });
 
 
-setTimeout(() => {  console.log("This is a timeout function"); }, 3000 ); // it is used to execute with some delay.
-setInterval(() => { console.log("This is an interval function"); }, 1000); // it used to execute with some interval time.
+// setTimeout(() => {  console.log("This is a timeout function"); }, 3000 ); // it is used to execute with some delay.
+// setInterval(() => { console.log("This is an interval function"); }, 1000); // it used to execute with some interval time.
+
+
+
+
+//     fetch("https://jsonplaceholder.typicode.com/todos")
+//   //  .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(error => console.error("Error fetching data:", error));
+
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//     .then(res => res.json()) // res -> string -> json)
+//     .then(data => data.filter(d => d.id % 2 === 0))
+//     .then(data => data.map(d => (d.title = "Vikram  " + d.title)))
+//     .then(data => console.log(data))
+//     .catch(error => console.error("Error fetching data:", error));
+ 
+
+    // userid %2=0 -> even id's
+    fetch("https://jsonplaceholder.typicode.com/todos")
+    .then(res => res.json())
+    .then(data => data.filter(d => d.userId % 2 === 0))
+    .then(data => console.log(data))
+    .catch(error => console.error("Error fetching data:", error));
+
+// getData().then((data) => {
+//     console.log(data);
+// }).catch((error) => {
+//     console.error("Error:", error);
+// });
+ 
+// setTimeout(() => {
+//     console.log("Data received");
+// }, 5000);
+// console.log("test");
+ 
+// setInterval(() => {
+//     console.log("Checking for new data...");
+// }, 3000);
