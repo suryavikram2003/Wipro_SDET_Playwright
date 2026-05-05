@@ -121,3 +121,18 @@ switch(choice)
 }
 
 // Calendar --> Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+
+//typeof
+console.log("Type of a: " + typeof a); // number
+console.log(typeof choice); // string
+console.log(typeof arr); // object
+
+for(let i =0;i<arr.length;i++)
+{
+    const element = arr[i];
+    if(typeof element === "number")
+    {
+        console.log("Element at index " + i + ": " + element);
+    }
+}
+
