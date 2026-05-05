@@ -18,19 +18,20 @@
 //Resolve
 function getdata() {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("Data fetched successfully");
-        }, 2000);
+        setTimeout(() => { // used to execute after some delay provide with the seconds mentioned below
+            resolve("Data fetched successfully");   // success message are displayed using resolve.
+        }, 2000); // delay seconds mentioned in ms.
     });
 }
-
-getdata().then(data => {
+ // this is like the try catch, which is used to execute and proivde the output, if getdata() function is successful then is executed.
+getdata().then(data => {  
     console.log(data);
 }).catch(error => {
     console.error("Error fetching data:", error);
 });
 
 //Reject
+// example for rejecting  or getting an error.
 function getdataerror(){
     return new Promise((resolve,reject)=>{
         setTimeout(() =>{
@@ -38,6 +39,7 @@ function getdataerror(){
         },2000);
     });
 }
+// reject will get into the catch block and the message is displayed.
 getdataerror().then(data =>{
     console.log(data);
 }).catch(error =>{
@@ -45,5 +47,5 @@ getdataerror().then(data =>{
 });
 
 
-//setTimeout(() => {  console.log("This is a timeout function"); }, 3000 );
-//setInterval(() => { console.log("This is an interval function"); }, 1000);
+setTimeout(() => {  console.log("This is a timeout function"); }, 3000 ); // it is used to execute with some delay.
+setInterval(() => { console.log("This is an interval function"); }, 1000); // it used to execute with some interval time.
