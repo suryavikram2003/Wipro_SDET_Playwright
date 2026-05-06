@@ -1,0 +1,229 @@
+
+Async Promise Example: Uses async/await with Promise and setTimeout() to simulate asynchronous data retrieval.
+Done for all 10 Fetch api task.
+/ DOG API 
+// Async function to fetch dog facts from an API
+async function getDogFacts() {
+    // Sends request to Dog API and waits for the response
+    const res = await fetch("https://dogapi.dog/api/v2/facts");
+    // Converts the API response into JSON format
+    const obj = await res.json(); 
+    // Extracts only the dog fact text from the response data array
+    return obj.data.map(d => d.attributes.body);
+}
+// Calls the function and prints the fetched dog facts in the console
+getDogFacts().then(console.log);
+
+
+
+setTimeout Example: Demonstrates delayed execution of code after a specified time interval.
+setInterval Example: Demonstrates repeated execution of a function at fixed intervals and stopping it using clearInterval().
+
+// Schedules a function to run after 5 seconds
+const timeoutId = setTimeout(() => {
+
+    // Displays message after timeout completes
+    console.log("Data received");
+}, 5000);
+
+// Executes immediately without waiting for timeout
+console.log("test");
+
+// Cancels the scheduled timeout before it executes
+clearTimeout(timeoutId);
+
+// Repeatedly executes the function every 3 seconds
+const i = setInterval(() => {
+    // Displays message repeatedly at fixed intervals
+    console.log("Checking for new data...");
+
+}, 3000);
+// Stops the interval execution immediately
+clearInterval(i);
+
+JSON Methods: Demonstrates converting objects to JSON strings using JSON.stringify() and parsing JSON strings back into objects using JSON.parse().
+const obj = {
+    name: "Vikram",
+    age: 23,
+    city: "Salem"
+}
+ 
+// console.log(JSON.stringify(obj)); // object -> string
+// console.log(JSON.parse('{"name":"Vikram","age":23,"city":"Salem"}')); // string -> object
+
+
+
+Abstraction: hiding the implementation details and showing only the essential features of the object to the user.
+hiding internal processes like boiling water and grinding beans using private methods while exposing only the brewCoffee() method.
+// Class representing a Coffee Machine
+class CoffeeMachine
+{
+    // Private field water temperature
+    #waterTemperature = 90;
+
+    // Private method to boil water
+    #boilWater()
+    {
+        return `Boiling Water to ${this.#waterTemperature} degree Celsius`;
+    }
+
+    // Private method to grind coffee beans
+    #grindBeans()
+    {
+        return "Grinding Coffee Beans";
+    }
+
+    // Public method accessible by users to brew coffee
+    brewCoffee()
+    {
+     
+        const boilWater = this.#boilWater();
+        const grindBeans = this.#grindBeans();
+
+        // Returns final coffee preparation process
+        return `${boilWater} and ${grindBeans}`;
+    }
+}
+// Creates an object
+const myCoffeeMachine = new CoffeeMachine();
+
+// Calls the public method and displays output
+console.log(myCoffeeMachine.brewCoffee());
+
+
+Encapsulation: It is the bundling of data and methods that operate on that data within a single unit (class) and restricting access to other parts of the code.
+encapsulation using the private field #balance and provides controlled access through deposit(), withdraw(), and getBalance() methods.
+
+// Class representing a Bank Account
+class BankAccount
+{
+    // Private variable used for encapsulation
+    #balance = 0;
+
+    // Method to deposit money into account
+    deposit(amount)
+    {
+        if(amount > 0)
+        {
+            // Adds deposit amount to balance
+            this.#balance += amount;
+
+            console.log(`Deposited: ${amount}. Current Balance: ${this.#balance}`);
+        }
+    }
+
+    // Method to withdraw money from account
+    withdraw(amount)
+    {
+        // Checks sufficient balance before withdrawal
+        if(amount > 0 && amount <= this.#balance)
+        {
+            this.#balance -= amount;
+
+            console.log(`Withdrawn: ${amount}. Current Balance: ${this.#balance}`);
+        }
+    }
+
+    // Returns current account balance
+    getBalance()
+    {
+        return this.#balance;
+    }
+}
+
+// Creates bank account object
+const VikramAccount = new BankAccount();
+
+// Deposits and withdraws money
+VikramAccount.deposit(1000);
+VikramAccount.withdraw(500);
+
+// Displays final account balance
+console.log(`Final Balance: ${VikramAccount.getBalance()}`);
+
+
+
+Inheritance:  the Admin class extends the User class and reuses its properties and functionalities while adding an additional role feature.
+// Parent class representing a normal user
+class User
+{
+    // Constructor initializes user name
+    constructor(name)
+    {
+        this.name = name;
+    }
+
+    // Method to display user login
+    logIn()
+    {
+        console.log(`${this.name} has logged in.`);
+    }
+}
+
+// Admin class inherits properties and methods from User class
+class Admin extends User
+{
+    // Constructor initializes admin name and role
+    constructor(name, role)
+    {
+        // Calls parent class constructor
+        super(name);
+
+        this.role = role;
+    }
+
+    // Overriding logIn() method for admin-specific behavior
+    logIn()
+    {
+        console.log(`${this.name} with role ${this.role} has logged in.`);
+    }
+}
+
+// Creates object of User class
+const user1 = new User("Alice");
+user1.logIn();
+
+// Creates object of Admin class
+const admin1 = new Admin("Bob", "SuperAdmin");
+admin1.logIn();
+
+
+
+
+Polymorphism: polymorphism where different classes override the draw() method to perform unique actions.
+// Parent class representing a generic shape
+class Shape 
+{   //draw() method
+    draw()
+    {
+        console.log("Drawing a shape");
+    }
+}
+
+// Circle class inherits Shape and overrides draw() method
+class Circle extends Shape
+{
+    draw()
+    {
+        console.log("Drawing a circle");
+    }
+}
+
+// Square class inherits Shape and overrides draw() method
+class Square extends Shape
+{
+    draw()
+    {
+        console.log("Drawing a square");
+    }   
+}
+
+// Creatinfg array and  objects of different shape classes
+const shapes = [new Circle(), new Square(), new Shape()];
+
+// Demonstrates polymorphism by calling same method with different behaviors
+shapes.forEach(shape => shape.draw());
+
+
+
+
