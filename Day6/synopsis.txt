@@ -1,0 +1,207 @@
+Flight Booking Data Cleaner:
+Problem Statement
+Develop a flight data cleaning system that converts unformatted flight booking strings into structured objects for frontend display and processing.
+
+Requirements:
+1.Parse flight strings formatted as "CITY_A-CITY_B:PRICE".
+2.Extract source city, destination city, and ticket price.
+3.Convert price values into numbers.
+4.Handle invalid or missing prices by assigning 0.
+5.Filter flights with prices between $100 and $500.
+6.Sort flights in ascending order based on price.
+7.Return the final processed data as a JSON string.
+Input Data:
+const rawFlights = [
+  "London-Paris:150",
+  "New York-Tokyo:invalid",
+  "Dubai-Mumbai:450",
+  "Berlin-Rome:95"
+];
+
+Steps:
+1.Parsed route and price details using split().
+2.Extracted departure and destination cities.
+3.Converted price strings into numeric values.
+4.Validated prices using isNaN().
+5.Created structured flight objects.
+6.Filtered flights within the required price range.
+7.Sorted flights by lowest price first.
+8.Returned formatted JSON output using JSON.stringify().
+Output:
+[
+  {
+    "from": "London",
+    "to": "Paris",
+    "price": 150
+  },
+  {
+    "from": "Dubai",
+    "to": "Mumbai",
+    "price": 450
+  }
+]
+
+
+E-Commerce Discount Applicator:
+Problem Statement:
+Build a promotional discount system that identifies eligible products, applies discounts, and updates shopping cart information dynamically.
+
+Requirements:
+1.Create a function that accepts cart data and a callback function.
+2.Identify products in the "Electronics" category with prices greater than $200.
+3.Apply a 10% discount to eligible products.
+4.Add an isDiscounted property to all products.
+5.Display the total discounted items and total savings.
+6.Simulate delayed processing using setTimeout().
+
+Input Data
+const cart = [
+  { name: "Smartphone", price: 800, category: "Electronics" },
+  { name: "Toaster", price: 50, category: "Home" },
+  { name: "Headphones", price: 250, category: "Electronics" },
+  { name: "Monitor", price: 150, category: "Electronics" }
+];
+Steps
+1.Created a reusable eligibility callback function.
+2.Checked product category and price conditions.
+3.Applied 10% discount to qualifying products.
+4.Added isDiscounted status for all items.
+5.Calculated total savings and discount count.
+6.Displayed promotional summary using template literals.
+7.Delayed final output using setTimeout() and Promise.
+
+Output
+Promotion applied! 2 items were discounted for a total saving of $105.00.
+[
+  {
+    name: 'Smartphone',
+    price: 720,
+    category: 'Electronics',
+    isDiscounted: true
+  },
+  {
+    name: 'Toaster',
+    price: 50,
+    category: 'Home',
+    isDiscounted: false
+  },
+  {
+    name: 'Headphones',
+    price: 225,
+    category: 'Electronics',
+    isDiscounted: true
+  },
+  {
+    name: 'Monitor',
+    price: 150,
+    category: 'Electronics',
+    isDiscounted: false
+  }
+]
+
+ Movie Stream Analytics
+
+Problem Statement
+Create a movie analytics processor that converts raw streaming data into structured objects and identifies top-performing Action and Sci-Fi movies.
+
+Requirements
+Parse movie strings formatted as "MOVIE_NAME|GENRE|VIEW_COUNT".
+Extract movie name, genre, and views.
+Convert views into numeric values.
+Replace invalid or corrupted views with 0.
+Filter movies from "Action" and "Sci-Fi" genres with more than 5000 views.
+Sort movies by highest views first.
+Return the final result as JSON.
+Input Data
+const rawMovies = [
+  "Inception|Sci-Fi|12000",
+  "The Lion King|Animation|8000",
+  "Mad Max|Action|invalid",
+  "The Matrix|Sci-Fi|15000",
+  "Gladiator|Action|4500"
+];
+
+
+Steps
+Split movie records into separate values.
+Extracted movie title, genre, and views.
+Converted view counts into numbers.
+Handled invalid view data using isNaN().
+Created structured movie objects.
+Filtered popular Action and Sci-Fi movies.
+Sorted movies based on descending views.
+Returned formatted JSON analytics data.
+Output
+[
+  {
+    "name": "The Matrix",
+    "genre": "Sci-Fi",
+    "views": 15000
+  },
+  {
+    "name": "Inception",
+    "genre": "Sci-Fi",
+    "views": 12000
+  }
+]
+
+
+Automated Payroll Processor
+Problem Statement
+Develop a payroll processing system that calculates employee tax deductions, determines final salaries, and generates payroll summaries.
+
+Requirements
+Create a callback function for tax calculation.
+Apply 20% tax for salaries above $5000.
+Apply 10% tax for salaries less than or equal to $5000.
+Calculate employee net salary after tax deduction.
+Assign employee status as "Premium" or "Standard".
+Display payroll summary information.
+Delay final payroll output using setTimeout().
+Input Data
+const employees = [
+  { id: 101, name: "Alice", salary: 6000 },
+  { id: 102, name: "Bob", salary: 3500 },
+  { id: 103, name: "Charlie", salary: 5200 }
+];
+
+
+Steps
+Created callback-based tax deduction logic.
+Calculated tax percentage based on salary slabs.
+Computed employee tax amounts and net salaries.
+Assigned employee categories based on net salary.
+Preserved existing employee details using spread operator.
+Calculated total company payout using reduce().
+Displayed payroll statistics using template literals.
+Simulated delayed backend processing using setTimeout().
+
+
+Output
+Payroll Processed: Total Net Payout is $12580.00 for 3 employees.
+[
+  {
+    id: 101,
+    name: 'Alice',
+    salary: 6000,
+    taxAmount: 1200,
+    netSalary: 4800,
+    status: 'Premium'
+  },
+  {
+    id: 102,
+    name: 'Bob',
+    salary: 3500,
+    taxAmount: 350,
+    netSalary: 3150,
+    status: 'Standard'
+  },
+  {
+    id: 103,
+    name: 'Charlie',
+    salary: 5200,
+    taxAmount: 1040,
+    netSalary: 4160,
+    status: 'Premium'
+  }
+]
