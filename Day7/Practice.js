@@ -150,3 +150,123 @@ function isArmstrong(num) {
 }
 
 console.log(isArmstrong(153));
+
+
+// ARRAYS
+// 1. Find the largest and smallest number in an array
+
+const numbers1 = [12, 45, 7, 89, 23];
+
+let largest = numbers1[0];
+let smallest = numbers1[0];
+
+for (let i = 1; i < numbers1.length; i++) {
+    if (numbers1[i] > largest) {
+        largest = numbers1[i];
+    }
+
+    if (numbers1[i] < smallest) {
+        smallest = numbers1[i];
+    }
+}
+
+console.log("Largest:", largest);
+console.log("Smallest:", smallest);
+
+
+// 2. Remove duplicate elements from an array
+
+const numbers2 = [1, 2, 3, 2, 4, 5, 1, 6];
+
+let uniqueArray = [];
+
+for (let i = 0; i < numbers2.length; i++) {
+
+    if (!uniqueArray.includes(numbers2[i])) {
+        uniqueArray.push(numbers2[i]);
+    }
+}
+
+console.log("Array without duplicates:", uniqueArray);
+
+
+// 3. Sort an array without using built-in sort()
+
+const numbers3 = [5, 2, 9, 1, 7];
+
+for (let i = 0; i < numbers3.length; i++) {
+
+    for (let j = 0; j < numbers3.length - 1 - i; j++) {
+
+        if (numbers3[j] > numbers3[j + 1]) {
+
+            let temp = numbers3[j];
+            numbers3[j] = numbers3[j + 1];
+            numbers3[j + 1] = temp;
+        }
+    }
+}
+
+console.log("Sorted Array:", numbers3);
+
+
+// 4. Find second largest number in an array
+
+const numbers4 = [10, 45, 67, 89, 23, 89];
+
+let firstLargest = -Infinity;
+let secondLargest = -Infinity;
+
+for (let i = 0; i < numbers4.length; i++) {
+
+    if (numbers4[i] > firstLargest) {
+
+        secondLargest = firstLargest;
+        firstLargest = numbers4[i];
+
+    } else if (
+        numbers4[i] > secondLargest &&
+        numbers4[i] !== firstLargest
+    ) {
+
+        secondLargest = numbers4[i];
+    }
+}
+
+console.log("Second Largest:", secondLargest);
+
+
+
+// 5. Merge two arrays and remove duplicates
+
+const arr1 = [1, 2, 3, 4];
+const arr2 = [3, 4, 5, 6];
+
+const mergedArray = [...arr1, ...arr2];
+
+let finalArray = [];
+
+for (let i = 0; i < mergedArray.length; i++) {
+
+    if (!finalArray.includes(mergedArray[i])) {
+        finalArray.push(mergedArray[i]);
+    }
+}
+
+console.log("Merged Unique Array:", finalArray);
+
+
+//objects
+
+// 1. Create an object for a student and display all properties dynamically
+
+const student = {
+    name: "Surya",
+    age: 21,
+    department: "CSE",
+    college: "Sona College of Technology"
+};
+
+for (let key in student) {
+    console.log(key + " : " + student[key]);
+}
