@@ -270,3 +270,90 @@ const student = {
 for (let key in student) {
     console.log(key + " : " + student[key]);
 }
+
+
+//Loops
+//Print star pyramid patter
+let rows = 5;
+
+for (let i = 1; i <= rows; i++) {
+    let spaces = " ".repeat(rows - i);
+    let stars = "*".repeat(2 * i - 1);
+
+    console.log(spaces + stars);
+}
+
+
+//Print Multiplication Tables from 1 to 10
+
+for (let i = 1; i <= 10; i++) {
+    console.log(`\nMultiplication Table of ${i}`);
+
+    for (let j = 1; j <= 10; j++) {
+        console.log(`${i} x ${j} = ${i * j}`);
+    }
+}
+
+
+// Find Sum of All Even number between 1 and 100
+let Evensum = 0;
+
+for (let i = 1; i <= 100; i++) {
+    if (i % 2 === 0) {
+        Evensum += i;
+    }
+}
+
+console.log("Sum of even numbers:", sum);
+
+//Print All Prime Number Between 1 and 100
+
+for (let num = 2; num <= 100; num++) {
+
+    let isPrime = true;
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            isPrime = false;
+            break;
+        }
+    }
+
+    if (isPrime) {
+        console.log(num);
+    }
+}
+
+
+//Number Guessing Game using loop
+
+let secretNumber = 7;
+
+let guess = 0;
+
+
+while (guess !== secretNumber) {
+
+
+    guess = Number(prompt("Enter your guess:"));
+
+
+    if (guess > secretNumber) {
+
+        console.log("Too High!");
+
+    }
+
+    else if (guess < secretNumber) {
+
+        console.log("Too Low!");
+
+    }
+
+    else {
+
+        console.log("Correct! You guessed the number.");
+
+    }
+
+}
