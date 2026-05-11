@@ -326,34 +326,178 @@ for (let num = 2; num <= 100; num++) {
 
 
 //Number Guessing Game using loop
+//math.randon and math.floor
 
+
+prompt.start();
+while(true) {
+    let randomNum = Math.floor(Math.random() * 100) + 1;
+    let userGuess = parseInt(prompt("Guess a number between 1 and 100: "));
 let secretNumber = 7;
 
 let guess = 0;
-
-
 while (guess !== secretNumber) {
-
-
-    guess = Number(prompt("Enter your guess:"));
-
-
-    if (guess > secretNumber) {
-
-        console.log("Too High!");
-
+    guess = parseInt(prompt("Guess the number between 1 and 10:"));
+    if (guess < secretNumber) {
+        console.log("Too low! Try again.");
+    }   else if (guess > secretNumber) {
+        console.log("Too high! Try again.");
     }
+}
+}
+console.log("Congratulations! You guessed the number.");
 
-    else if (guess < secretNumber) {
 
-        console.log("Too Low!");
+const calc = {
+    sum: (...op) => op.reduce((acc, curr) => acc + curr, 0),
+    sub: (...op) => op.reduce((acc, curr) => acc - curr, 0),
+    mul: (...op) => op.reduce((acc, curr) => acc * curr, 1),
+    div: (...op) => op.reduce((acc, curr) => acc / curr, 1),
+};
+ 
+console.log(calc.sum(5, 5, 10, 20));
 
+
+//closure
+let sum = 0; // 2
+function f() {
+    function increment() {
+        sum++;
+        
+        function inner2() {
+            sum++;
+            console.log(sum);
+        }
+        return inner2();
     }
+    return increment();
+}
+f();
+console.log(sum);
 
-    else {
-
-        console.log("Correct! You guessed the number.");
-
+let sum = 0; // 2
+function f() {
+    function increment() {
+        sum++;
+        
+        function inner2() {
+            sum++;
+            console.log(sum);
+        }
+        return inner2();
     }
+    return increment();
+}
+f();
+console.log(sum);
+ 
+function calculator(a, b, operation) {
+    return operation(a, b);
+}
+function add(x, y) {
+    return x + y;
+}
+function subtract(x, y) {
+    return x - y;
+}
+function multiply(x, y) {
+    return x * y;
+}
+function divide(x, y) {
+    return x / y;
+}
+console.log("Addition:", calculator(10, 5, add));
+console.log("Subtraction:", calculator(10, 5, subtract));
+console.log("Multiplication:", calculator(10, 5, multiply));
+console.log("Division:", calculator(10, 5, divide));
+ 
+function calculator(a, b, operation) {
+    return operation(a, b);
+}
+ 
+function add(x, y) {
+    return x + y;
+}
+ 
+function multiply(x, y) {
+    return x * y;
+}
+ 
+console.log("Addition: " + calculator(10, 5, add));
+console.log("Multiplication: " + calculator(10, 5, multiply));
+ 
+function calculator(a, b, operation) {
+ 
+    return operation(a, b);
+}
+ 
+function add(x, y) {
+    return x + y;
+}
+ 
+function multiply(x, y) {
+    return x * y;
+}
+ 
+console.log(calculator(10, 5, add));
+ 
+console.log(calculator(10, 5,
+ 
+function add(a, b) {
+
+    return a + b;
 
 }
+ 
+function subtract(a, b) {
+
+    return a - b;
+
+}
+ 
+function multiply(a, b) {
+
+    return a * b;
+
+}
+ 
+function divide(a, b) {
+
+    return a / b;
+
+}
+ 
+function calculator(a, b, callback) {
+
+    return callback(a, b);
+
+}
+ 
+console.log(calculator(10, 5, add));
+
+console.log(calculator(10, 5, subtract));
+
+console.log(calculator(10, 5, multiply));
+
+console.log(calculator(10, 5, divide));
+ 
+
+
+
+
+const calc = {
+    sum: (...op) => op.reduce((acc, curr) => acc + curr, 0),
+    sub: (...op) => op.reduce((acc, curr) => acc - curr, 0),
+    mul: (...op) => op.reduce((acc, curr) => acc * curr, 1),
+    div: (...op) => op.reduce((acc, curr) => acc / curr, 1),
+};
+ 
+ 
+function calculator(operation, ...operands) {
+    return operation(...operands);
+}
+ 
+console.log(calculator(calc.sum, 1, 2, 3);
+
+
+//flatten an array -- manually
