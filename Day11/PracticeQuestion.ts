@@ -243,3 +243,50 @@ async function dryRun(){
 }
 
 dryRun();
+
+
+
+
+// 9. Index Signatures for Dynamic Metadata
+// ● Scenario: You are receiving a "Metadata" object from a server where the keys are
+// dynamic strings, but the values must be either a string, number, or boolean.
+// ● Task: Create an interface UserMetadata that has a required createdAt: Date but allows
+// any other dynamic string keys as long as their values match the union type mentioned
+
+interface UserMetadata{
+    createdAt: Date;
+    [key: string]: string | number | boolean |Date;
+}
+
+const userMeta: UserMetadata ={
+    createdAt: new Date(),
+    username: "john_doe",
+    age: 30,
+    isAdmin: true
+}
+console.log(userMeta);
+
+
+// 10. Mapped Types with Key Remapping
+// ● Scenario: You have a data model and need to generate a type for an API response that
+// "prefixes" all the keys.
+// ● Task:
+// 1. Define an interface Car { make: string; model: string; }.
+// 2. Create a mapped type ApiResponse<T> that iterates through keys of T and
+// renames them to be uppercase and prefixed with DATA_ (e.g., make becomes
+// DATA_MAKE).
+
+interface Car{
+    make: string;
+    model :string;
+}
+
+type ApiResponse<T> ={
+    [K in keyof T as `DATA_${Uppercase<string & K>}`]: T[K];
+}
+
+const carResponse: ApiResponse<Car> = {
+    DATA_MAKE: "Toyota",
+    DATA_MODEL: "Corolla"
+};
+console.log(carResponse);
