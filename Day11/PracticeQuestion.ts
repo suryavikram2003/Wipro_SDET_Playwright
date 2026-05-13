@@ -31,10 +31,6 @@ fetchData<Album>('https://jsonplaceholder.typicode.com/albums/1')
     });
 
 
-
-
-
-
 //2. Record Mapping for Configuration
 //● Scenario: You are managing feature flags or permissions for specific user roles.
 //● Task: Define an enum Role { Admin, Editor, Guest }. Use the Record utility type to create
@@ -56,14 +52,14 @@ const permissions: PermissionMap = {
     [Role.Guest]: false
 };
 
-const permissions2: PermissionMap = {
-    [Role.Admin]: true,
-    [Role.Editor]: false,
-    // [Role.Guest]: false // This will throw an error because it's missing
-};
-console.log('Admin Permissions:', permissions[Role.Admin]);
-console.log('Editor Permissions:', permissions[Role.Editor]);
-console.log('Guest Permissions:', permissions[Role.Guest]);
+// const permissions2: PermissionMap = {
+//     [Role.Admin]: true,
+//     [Role.Editor]: false,
+//     // [Role.Guest]: false //error if not present
+// };
+// console.log('Admin Permissions:', permissions[Role.Admin]);
+// console.log('Editor Permissions:', permissions[Role.Editor]);
+// console.log('Guest Permissions:', permissions[Role.Guest]);
 
 
 
@@ -88,7 +84,6 @@ function handleTask(status: TaskStatus): string {
         case 'Closed':
             return "Task is closed";
 
-       
         default:
             const exhaustiveCheck: never = status;
             return exhaustiveCheck;
@@ -96,9 +91,9 @@ function handleTask(status: TaskStatus): string {
 }
 
 
-console.log(handleTask('Open')); // Output: Task is open
+console.log(handleTask('Open')); 
 console.log(handleTask('InProgress'));
-console.log(handleTask('Closed')); // Output: Task is closed
+console.log(handleTask('Closed')); 
 
 
 
@@ -144,9 +139,9 @@ console.log(myFolder2);
 
 type MarginValue = `${number}px` | `${number}rem` | `${number}vh`;
 
-const margin1: MarginValue = "10px"; // Valid
+const margin1: MarginValue = "10px";
 const margin2: MarginValue = "2rem";
-const margin3: MarginValue = "5vh"; // Valid
+const margin3: MarginValue = "5vh"; 
 
 console.log(margin1);
 console.log(margin2);
@@ -165,7 +160,6 @@ type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
 
 type stringtype= UnwrapPromise<Promise<string>>;
 type numberType = UnwrapPromise<number>;
-
 
 const exampleStringType: stringtype = 'example string';
 const exampleNumberType: numberType = 123;
@@ -192,3 +186,60 @@ const nonFormEvents: NonFormEvents[] = ['click', 'dbclick', 'keypress'];
 
 console.log('Mouse Events:', mouseEvents);
 console.log('Non-Form Events:', nonFormEvents);
+
+
+
+// //8. Async Higher-Order Function (HOF)
+// ● Scenario: You want to wrap any asynchronous function with a standard error logger.
+// ● Task: Write a generic function safeExecute<T> that takes an async function as an
+// argument. It should return a new function that, when called, executes the original
+// function inside a try/catch block and returns null if it fails
+
+
+function safeExecute<T>(asyncFunction :() => Promise<T>):
+    () => Promise<T | null>{
+        return async () =>{
+            try{
+                return await asyncFunction();
+            } catch (error) {
+                console.error('Error occurred:', error);
+                return null;
+            }
+        }
+    }
+console.log(safeExecute(async () => {
+    if (Math.random() > 10){
+        throw new Error('Random failure');
+    }
+    return 'Success';
+})());
+
+
+
+function safeExecute2<Args extends any[],T>(asyncFnc: (...args: Args) => Promise<T>)
+{
+    return async (...args:Args): Promise<T | null > =>{
+        try{
+            return await asyncFnc(...args);
+        } catch (error) {
+            console.error('Error occurred:', error);
+            return null;
+        }
+}}
+const info = async (id:number): Promise<string> =>{
+    if(id=== -1) throw new Error('Invalid ID');
+    return `Data for ID: ${id}`;
+}
+
+async function dryRun(){
+    const getData = safeExecute2(info);
+    const res = await getData(10);
+    const res1 = await getData(-1);
+    const res2 = await getData(0);
+
+   console.log('Result for ID 10:', res);
+    console.log('Result for ID -1:', res1);
+    console.log('Result for ID 0:', res2);
+}
+
+dryRun();
