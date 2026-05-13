@@ -5,30 +5,30 @@
 //fetch API, check if the response is okay, and return the JSON parsed as type T. Test it
 //by creating an Album interface and fetching data from a mock URL.
 
-// interface Album{
-//     userId: number;
-//     id: number;
-//     title: string;
-// }
+interface Album{
+    userId: number;
+    id: number;
+    title: string;
+}
 
-// async function fetchData<T>(url: string): Promise<T> {
-//     const response = await fetch(url);
-//     if (!response.ok) {
-//         throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     const data = await response.json();
-//     return data as T;
-// }
+async function fetchData<T>(url: string): Promise<T> {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data as T;
+}
 
-// fetchData<Album>('https://jsonplaceholder.typicode.com/albums/1')
-//     .then(album => {
-//         console.log('Album ID:', album.userId);
-//         console.log('Album Title:', album.id);
-//         console.log('Album Artist:', album.title);
-//     })
-//     .catch(error => {
-//         console.error('Error fetching album data:', error);
-//     });
+fetchData<Album>('https://jsonplaceholder.typicode.com/albums/1')
+    .then(album => {
+        console.log('Album ID:', album.userId);
+        console.log('Album Title:', album.id);
+        console.log('Album Artist:', album.title);
+    })
+    .catch(error => {
+        console.error('Error fetching album data:', error);
+    });
 
 
 
@@ -56,15 +56,14 @@ const permissions: PermissionMap = {
     [Role.Guest]: false
 };
 
-// //create a two object and one should have role and other should not , throw an error for it.
-// const permissions2: PermissionMap = {
-//     [Role.Admin]: true,
-//     [Role.Editor]: false,
-//     // [Role.Guest]: false // This will throw an error because it's missing
-// };
-// console.log('Admin Permissions:', permissions[Role.Admin]);
-// console.log('Editor Permissions:', permissions[Role.Editor]);
-// console.log('Guest Permissions:', permissions[Role.Guest]);
+const permissions2: PermissionMap = {
+    [Role.Admin]: true,
+    [Role.Editor]: false,
+    // [Role.Guest]: false // This will throw an error because it's missing
+};
+console.log('Admin Permissions:', permissions[Role.Admin]);
+console.log('Editor Permissions:', permissions[Role.Editor]);
+console.log('Guest Permissions:', permissions[Role.Guest]);
 
 
 
@@ -89,7 +88,7 @@ function handleTask(status: TaskStatus): string {
         case 'Closed':
             return "Task is closed";
 
-        // Step 3: Exhaustiveness checking using never
+       
         default:
             const exhaustiveCheck: never = status;
             return exhaustiveCheck;
