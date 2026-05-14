@@ -1,0 +1,29 @@
+Playwright Synopsis :
+    it is an automation tool to test the websites to evaluate its working and functionality whether it works as expected.
+    features are parallesim, autowait, fast compared to selinum.
+    Selenium need manual wait
+    Playwright handle by backend auto-wait
+    Advantage of playwright:works with chromium, webkit,firefox
+
+    
+Playwright princple:
+Expect value and actual value which are the outcomes of the executions that gives sucess or failure.
+We need to check for the failed cases or failure edge cases.
+Checking the boundary values
+
+
+To install Playwright:
+    npm init playwright@latest
+
+To run :
+    npx playwright test //to run all the test files
+    npx playwright test ex.spec.js // specify file
+
+ Async and await keywords should be used while handling asynchronous operations inside callbacks.
+
+page.goto, toHaveTitle,toBe,toBeVisible,getByRole are functions are executed.
+
+
+To view the report:
+
+npx playwright show-report
