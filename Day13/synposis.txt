@@ -1,0 +1,19 @@
+Playwright Synopsis :
+    Building and testing a simple login application using Express and Playwright.
+    The webapp serves a login page from the public folder and accepts username and password through a form.
+    The backend validates the credentials and returns messages for valid login, invalid login, and input length rules>3.
+
+    The test file uses locators such as #username, #password, #loginBtn, and #msg to interact with the login page.
+Used:
+    express,dotenv is used to read the PORT value from .env,to avoid exposing in the code.
+    The login form uses fetch to send data to /loginwithcreds.
+    path
+
+  
+Tested the Login form using
+    admin123 and admin123 should show Login successful.
+    short username or password should show validation message.
+    wrong password should show Invalid credentials.
+    length < 3 or password < 5 should , indicate the message that both username and password should be greater.
+
+    used debug mode, how the login page works on different browser and validates.
